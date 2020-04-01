@@ -1,14 +1,17 @@
 class SinglyLinkedListNode:
-    def __init__(self, data: int):
+    data = None
+    next = None
+
+    def __init__(self, data):
         self.data = data
         self.next = None
 
 
 class SinglyLinkedList:
-    def __init__(self, data: int):
+    def __init__(self, data):
         self.head = SinglyLinkedListNode(data)
 
-    def append(self, data: int):
+    def append(self, data):
         """Appends a node to the tail of the list"""
         end_node = SinglyLinkedListNode(data)
         current_node = self.head
@@ -18,7 +21,7 @@ class SinglyLinkedList:
 
         current_node.next = end_node
 
-    def delete(self, data: int):
+    def delete(self, data):
         """
         Deletes a node that matches the supplied data value.
         Removes all matches
