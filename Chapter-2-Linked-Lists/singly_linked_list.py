@@ -60,7 +60,7 @@ class SinglyLinkedList:
             pointer_1 = self.head
             pointer_2 = self.head
 
-            for i in range(0, k, 1):
+            for _ in range(0, k, 1):
                 if pointer_1 is None:
                     return None
                 else:

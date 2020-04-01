@@ -2,7 +2,7 @@ import unittest
 import sys
 import io
 
-import singly_linked_list as sl
+from .. import singly_linked_list as sl
 
 
 class TestSinglyLinkedList(unittest.TestCase):
