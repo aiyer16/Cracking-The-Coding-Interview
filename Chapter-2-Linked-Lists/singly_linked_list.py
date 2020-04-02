@@ -79,7 +79,7 @@ class SinglyLinkedList:
             x = length - k
             current_node = None
 
-            for i in range(0, x + 1, 1):
+            for _ in range(0, x + 1, 1):
                 if current_node is None:
                     current_node = self.head
                 else:
@@ -88,7 +88,7 @@ class SinglyLinkedList:
             return current_node
 
     def length(self):
-        """Returns the length of the lsit """
+        """Returns the length of the list """
         length = 1
         current_node = self.head
 
