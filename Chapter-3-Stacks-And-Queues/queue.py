@@ -47,4 +47,5 @@ class Queue:
         return self.first.data
 
     def is_empty(self):
+        """Returns True if queue is empty"""
         return self.first == None
