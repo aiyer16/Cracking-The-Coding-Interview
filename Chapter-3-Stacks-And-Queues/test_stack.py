@@ -2,6 +2,7 @@ import unittest
 
 from . import stack as st
 
+
 class TestStack(unittest.TestCase):
     def setUp(self):
         self.my_stack = st.Stack()
@@ -11,11 +12,11 @@ class TestStack(unittest.TestCase):
 
     def test_push_items(self):
         self.assertEqual(3, self.my_stack.length)
-    
+
     def test_pop_item(self):
         item = self.my_stack.pop()
         self.assertEqual(4, item)
-    
+
     def test_is_empty(self):
         my_stack = st.Stack()
         self.assertTrue(my_stack.is_empty())
@@ -27,6 +28,19 @@ class TestStack(unittest.TestCase):
         my_stack = st.Stack()
         self.assertRaises(IndexError, my_stack.peek)
 
+    def test_min_stack(self):
+        my_stack = st.MinStack()
+        my_stack.push(2)
+        my_stack.push(2)
+        my_stack.push(3)
+        my_stack.push(4)
+        my_stack.push(1)
+        my_stack.push(-1)
+
+        min = my_stack.min()
+
+        self.assertEqual(-1, min)
+
+
 if __name__ == "__main__":
     unittest.main()
-
