@@ -34,7 +34,7 @@ class Queue:
         self.first = self.first.next
 
         if (self.first is None):
-            self.last == None
+            self.last = None
 
         self.length -= 1
 
@@ -49,4 +49,4 @@ class Queue:
 
     def is_empty(self):
         """Returns True if queue is empty"""
-        return self.first == None
+        return (self.first is None)

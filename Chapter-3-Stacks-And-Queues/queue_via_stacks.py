@@ -2,7 +2,7 @@ from . import stack as st
 
 
 class QueueViaStacks:
-    
+
     def __init__(self):
         self.stack_new = st.Stack()
         self.stack_old = st.Stack()

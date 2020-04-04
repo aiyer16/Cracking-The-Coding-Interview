@@ -25,5 +25,6 @@ class TestQueueViaStacks(unittest.TestCase):
         my_queue_empty = q.QueueViaStacks()
         self.assertRaises(IndexError, my_queue_empty.peek)
 
+
 if __name__ == '__main__':
     unittest.main()

@@ -9,20 +9,22 @@ class TestStack(unittest.TestCase):
         self.my_stack.push(1)
         self.my_stack.push(2)
         self.my_stack.push(4)
+        self.my_stack.push(3)
+        self.my_stack.push(6)
 
     def test_push_items(self):
-        self.assertEqual(3, self.my_stack.length)
+        self.assertEqual(5, self.my_stack.length)
 
     def test_pop_item(self):
         item = self.my_stack.pop()
-        self.assertEqual(4, item)
+        self.assertEqual(6, item)
 
     def test_is_empty(self):
         my_stack = st.Stack()
         self.assertTrue(my_stack.is_empty())
 
     def test_peek_stack(self):
-        self.assertEqual(4, self.my_stack.peek())
+        self.assertEqual(6, self.my_stack.peek())
 
     def test_peek_empty_stack(self):
         my_stack = st.Stack()
@@ -40,6 +42,16 @@ class TestStack(unittest.TestCase):
         min = my_stack.min()
 
         self.assertEqual(-1, min)
+
+    def test_sort(self):
+        sorted_stack = st.sort(self.my_stack, order='asc')
+        output_list_expected = [6, 4, 3, 2, 1]
+        output_list = []
+
+        while not (sorted_stack.is_empty()):
+            output_list.append(sorted_stack.pop())
+
+        self.assertEqual(output_list_expected, output_list)
 
 
 if __name__ == "__main__":

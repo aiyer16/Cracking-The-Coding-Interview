@@ -25,5 +25,6 @@ class TestQueue(unittest.TestCase):
         my_queue = q.Queue()
         self.assertRaises(IndexError, my_queue.peek)
 
+
 if __name__ == '__main__':
     unittest.main()
