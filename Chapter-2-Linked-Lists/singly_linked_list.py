@@ -1,8 +1,6 @@
 class SinglyLinkedListNode:
-    data = None
-    next = None
 
-    def __init__(self, data):
+    def __init__(self, data=None):
         self.data = data
         self.next = None
 

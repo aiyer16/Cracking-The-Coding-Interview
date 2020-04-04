@@ -1,7 +1,8 @@
 class Queue:
-    first = None
-    last = None
-    length = 0
+    def __init__(self):
+        self.first = None
+        self.last = None
+        self.length = 0
 
     class QueueNode:
         data = None

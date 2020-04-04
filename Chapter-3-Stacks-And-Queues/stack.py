@@ -1,13 +1,13 @@
 class Stack:
-    top = None
-    length = 0
+    
+    def __init__(self):
+        self.top = None
+        self.length = 0
 
     class StackNode:
-        data = None
-        next = None
-
         def __init__(self, data):
             self.data = data
+            self.next = None 
 
     def pop(self):
         """Retrieve last item from stack"""
