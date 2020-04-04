@@ -74,27 +74,27 @@ class MinStack(Stack):
         return self.min_values.peek()
 
 
-def sort(unsorted_stack: Stack, order='asc') -> Stack:
+def sort(unsorted_stack: Stack, order='desc') -> Stack:
     """Sort stack based in ascending or descending order"""
     if (unsorted_stack.is_empty()):
         return unsorted_stack
 
-    def sort_inner_asc(unsorted_stack: Stack,
-                       sorted_stack: Stack, temp_stack: Stack):
-        if (sorted_stack.is_empty()):
-            sorted_stack.push(unsorted_stack.pop())
-        elif (sorted_stack.peek() <= unsorted_stack.peek()):
-            sorted_stack.push(unsorted_stack.pop())
-        else:
-            temp_stack.push(sorted_stack.pop())
-            sort_inner_asc(unsorted_stack, sorted_stack, temp_stack)
+    if order.lower() == 'desc':
+        def sort_inner_asc(unsorted_stack: Stack,
+                           sorted_stack: Stack, temp_stack: Stack):
+            if (sorted_stack.is_empty()):
+                sorted_stack.push(unsorted_stack.pop())
+            elif (sorted_stack.peek() <= unsorted_stack.peek()):
+                sorted_stack.push(unsorted_stack.pop())
+            else:
+                temp_stack.push(sorted_stack.pop())
+                sort_inner_asc(unsorted_stack, sorted_stack, temp_stack)
 
-        while not (temp_stack.is_empty()):
-            sorted_stack.push(temp_stack.pop())
+            while not (temp_stack.is_empty()):
+                sorted_stack.push(temp_stack.pop())
 
-        return
+            return
 
-    if order.lower() == 'asc':
         temp_stack = Stack()
         sorted_stack = Stack()
 
@@ -102,7 +102,19 @@ def sort(unsorted_stack: Stack, order='asc') -> Stack:
             sort_inner_asc(unsorted_stack, sorted_stack, temp_stack)
 
         return sorted_stack
-    elif order.lower() == 'desc':
-        pass
+    elif order.lower() == 'asc':
+        sorted_stack = Stack()
+
+        while not(unsorted_stack.is_empty()):
+            # Insert each element in unsorted_stack
+            # in sorted order into sorted_stack
+            temp = unsorted_stack.pop()
+
+            while (not sorted_stack.is_empty() and sorted_stack.peek() < temp):
+                unsorted_stack.push(sorted_stack.pop())
+
+            sorted_stack.push(temp)
+
+        return sorted_stack
     else:
         raise ValueError('Order must be either ascending or descending')

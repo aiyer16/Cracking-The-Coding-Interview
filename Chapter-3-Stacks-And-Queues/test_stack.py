@@ -15,7 +15,7 @@ class TestStack(unittest.TestCase):
     def test_push_items(self):
         self.assertEqual(5, self.my_stack.length)
 
-    def test_pop_item(self):
+    def test_pop_one_item(self):
         item = self.my_stack.pop()
         self.assertEqual(6, item)
 
@@ -43,9 +43,19 @@ class TestStack(unittest.TestCase):
 
         self.assertEqual(-1, min)
 
-    def test_sort(self):
-        sorted_stack = st.sort(self.my_stack, order='asc')
+    def test_sort_desc(self):
+        sorted_stack = st.sort(self.my_stack, order='desc')
         output_list_expected = [6, 4, 3, 2, 1]
+        output_list = []
+
+        while not (sorted_stack.is_empty()):
+            output_list.append(sorted_stack.pop())
+
+        self.assertEqual(output_list_expected, output_list)
+
+    def test_sort_asc(self):
+        sorted_stack = st.sort(self.my_stack, order='asc')
+        output_list_expected = [1, 2, 3, 4, 6]
         output_list = []
 
         while not (sorted_stack.is_empty()):
