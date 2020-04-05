@@ -11,13 +11,16 @@ class SinglyLinkedList:
 
     def append(self, data):
         """Appends a node to the tail of the list"""
-        end_node = SinglyLinkedListNode(data)
-        current_node = self.head
+        if (self.head.data is None):
+            self.head.data = data
+        else:
+            end_node = SinglyLinkedListNode(data)
+            current_node = self.head
 
-        while (current_node.next is not None):
-            current_node = current_node.next
+            while (current_node.next is not None):
+                current_node = current_node.next
 
-        current_node.next = end_node
+            current_node.next = end_node
 
     def delete(self, data):
         """
@@ -140,7 +143,8 @@ class SinglyLinkedList:
                 current_node = current_node.next
 
 
-def sum_lists_reverse(llist1: SinglyLinkedList, llist2: SinglyLinkedList):
+def sum_lists_reverse(llist1: SinglyLinkedList,
+                      llist2: SinglyLinkedList) -> SinglyLinkedList:
     """
     Method to sum two numbers represented by linked lists
     Each node contains 1 digit and digits are stored in reverse order
@@ -186,3 +190,51 @@ def sum_lists_reverse(llist1: SinglyLinkedList, llist2: SinglyLinkedList):
         result.next = temp
 
     return result_llist
+
+
+def merge_sorted_lists(llist1: SinglyLinkedList,
+                       llist2: SinglyLinkedList) -> SinglyLinkedList:
+    """
+    Method to merge two sorted linked lists
+
+    Example:
+        Input: (1-->2-->4-->7-->10), (2-->3-->5-->9)
+        Output: 1-->2-->2-->3-->4-->5-->7-->9-->10
+    """
+    # Base case
+    if (llist1 is None) and (llist2 is not None):
+        return llist2
+    elif (llist2 is None) and (llist1 is not None):
+        return llist1
+    elif (llist1 is None) and (llist2 is None):
+        return None
+
+    sorted_llist = SinglyLinkedList(None)
+    p = llist1.head
+    q = llist2.head
+
+    if (p.data <= q.data):
+        sorted_llist.append(p.data)
+        p = p.next
+    else:
+        sorted_llist.append(q.data)
+        q = q.next
+
+    while (p is not None) and (q is not None):
+        if (p.data <= q.data):
+            sorted_llist.append(p.data)
+            p = p.next
+        else:
+            sorted_llist.append(q.data)
+            q = q.next
+
+    if (p is None) and (q is not None):
+        while (q.next is not None):
+            sorted_llist.append(q.data)
+            q = q.next
+    elif (p is not None) and (q is None):
+        while (p is not None):
+            sorted_llist.append(p.data)
+            p = p.next
+
+    return sorted_llist
