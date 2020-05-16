@@ -5,6 +5,7 @@ This repository contains code for common data structures and algorthms in Python
 - Improving my own skills on key topics of data structures and algorithms
 - Provide a reference to others preparing for interviews
 
+
 # Topics
 
 ## Trees
@@ -41,11 +42,11 @@ Worst case occurs when the tree degenerates to a line.
 
 ### BST Operations
 #### Insert
-When inserting a new value at node position, there are three possible cases:
-    1. New value is > value in current node position. In this case, recurse down right sub-tree
-    2. New value is < value in current node position. In this case, recurse down left sub-tree
-    3. New value = value in current node position. Here you will need to decide to either insert left or right if your BST supports duplicates; otherwise just ignore new value insert.
-    4. No node exists at node position. In this case, create new node with new value.  
+When inserting a new value at node position, there are three possible cases:  
+   - New value is > value in current node position. In this case, recurse down right sub-tree
+   - New value is < value in current node position. In this case, recurse down left sub-tree
+   - New value = value in current node position. Here you will need to decide to either insert left or right if your BST supports duplicates; otherwise just ignore new value insert.
+   - No node exists at node position. In this case, create new node with new value.  
 
 Depending on the data, you might end up with a linear tree and this is **very bad** since the complexity for all operations on this tree is O(n). For example, see below:
 
