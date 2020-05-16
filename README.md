@@ -38,7 +38,10 @@ Image Source: https://youtu.be/RBSGKlAvoiM
 | Remove    	| O(log(n)) 	| O(n)  	|
 | Search    	| O(log(n)) 	| O(n)  	|
 
-Worst case occurs when the tree degenerates to a line. 
+Depending on the data, you might end up with a linear tree and this is **very bad** since the complexity for all operations on this tree is O(n). This is the worst case described above. For example, see below:
+
+![Image of Binary Trees](/images/LinearBST.png)  
+Image Source: https://youtu.be/RBSGKlAvoiM
 
 ### BST Operations
 #### Insert
@@ -47,11 +50,6 @@ When inserting a new value at node position, there are three possible cases:
    - New value is < value in current node position. In this case, recurse down left sub-tree
    - New value = value in current node position. Here you will need to decide to either insert left or right if your BST supports duplicates; otherwise just ignore new value insert.
    - No node exists at node position. In this case, create new node with new value.  
-
-Depending on the data, you might end up with a linear tree and this is **very bad** since the complexity for all operations on this tree is O(n). For example, see below:
-
-![Image of Binary Trees](/images/LinearBST.png)  
-Image Source: https://youtu.be/RBSGKlAvoiM
 
 ## Heaps
 A heap is a tree based data structure that satisfies the heap invariant (a.k.a heap property): If A is the parent node of B, then A is ordered with respect to B for all nodes A, B in the heap.
